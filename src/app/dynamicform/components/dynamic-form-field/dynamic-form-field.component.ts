@@ -12,13 +12,11 @@ export class DynamicFormFieldComponent{
   @Input() title!: string;
   @Input() type!: string;
   @Input() value!: string;
+  @Input() form!: FormGroup;
   
   @Output() onBlurEmitted = new EventEmitter<string>();
-  
-  form!: FormGroup;
 
-  constructor(private rootFormGroup: FormGroupDirective) {
-    this.form = this.rootFormGroup.control;
+  constructor() {
   }
 
   onBlur() {
