@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CollaboratorsModule } from './collaborators/collaborators.module';
+import { DynamicformModule } from './dynamicform/dynamicform.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { CollaboratorsModule } from './collaborators/collaborators.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CollaboratorsModule
+    CollaboratorsModule,
+    DynamicformModule
   ],
   providers: [],
   bootstrap: [AppComponent]
