@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
 import { Collaborator } from '../models/collaborator.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class MockApiService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getCollaborators(): Observable<Collaborator[]> {
     const mockCollaborators = [
@@ -23,6 +24,9 @@ export class MockApiService {
       }
     ]
     return of(mockCollaborators)
+
+    // the other way to do this if we got a real api will be:
+    // return this.httpClient.get('https://your-api/collaborators');
   }
 
   getCollaboratorById(id: string): Observable<Collaborator | undefined> {
@@ -48,5 +52,8 @@ export class MockApiService {
     ];
     const collaboratorFound = mockDB.find(collaborator => collaborator.id === id);
     return of(collaboratorFound)
+
+    // the other way to do this if we got a real api will be:
+    // return this.httpClient.get(`https://your-api/collaborators/${id}`);
   }
 }
