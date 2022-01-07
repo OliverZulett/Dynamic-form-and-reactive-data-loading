@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-collaborators',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollaboratorsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    this.apiService.fetchCollaboratorsData()
+      .subscribe(collaboratorsData => console.log(collaboratorsData))
   }
 
 }

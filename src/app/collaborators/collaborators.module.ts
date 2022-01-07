@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
 import { MockApiService } from './services/mock-api.service';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MockApiService } from './services/mock-api.service';
     CollaboratorsComponent
   ],
   providers: [
-    MockApiService
+    MockApiService,
+    ApiService
   ]
 })
 export class CollaboratorsModule { }

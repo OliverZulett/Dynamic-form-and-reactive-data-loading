@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { from, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 
 @Injectable()
 export class MockApiService {
 
   constructor() { }
 
-  getCollaborators() {
-    return from([
+  getCollaborators(): Observable<any[]> {
+    const mockCollaborators: Array<any> = [
       {
         id: 1,
         name: "collaborator1"
@@ -20,7 +20,8 @@ export class MockApiService {
         id: 3,
         name: "collaborator3"
       }
-    ])
+    ]
+    return from(mockCollaborators)
   }
 
   getCollaboratorById(id: string) {
