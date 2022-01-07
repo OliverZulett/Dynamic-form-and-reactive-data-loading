@@ -12,7 +12,7 @@ export class ApiService {
         from(collaborators).pipe(
           mergeMap(
             (collborator) =>
-              this.mockApiService.getCollaboratorById(collborator.id),
+              from(this.mockApiService.getCollaboratorById(collborator.id)),
             4
           ),
           toArray()

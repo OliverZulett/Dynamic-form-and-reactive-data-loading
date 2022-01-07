@@ -1,30 +1,31 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
+import { Collaborator } from '../models/collaborator.model';
 
 @Injectable()
 export class MockApiService {
 
   constructor() { }
 
-  getCollaborators(): Observable<any[]> {
-    const mockCollaborators: Array<any> = [
+  getCollaborators(): Observable<Collaborator[]> {
+    const mockCollaborators = [
       {
-        id: 1,
+        id: "1",
         name: "collaborator1"
       },
       {
-        id: 2,
+        id: "2",
         name: "collaborator2"
       },
       {
-        id: 3,
+        id: "3",
         name: "collaborator3"
       }
     ]
-    return from(mockCollaborators)
+    return of(mockCollaborators)
   }
 
-  getCollaboratorById(id: string) {
+  getCollaboratorById(id: string): Observable<Collaborator | undefined> {
     const mockDB = [
       {
         id: "1",
@@ -45,6 +46,7 @@ export class MockApiService {
         phone: "+591-7654120"
       }
     ];
-    return of(mockDB.find(collaborator => collaborator.id === id))
+    const collaboratorFound = mockDB.find(collaborator => collaborator.id === id);
+    return of(collaboratorFound)
   }
 }

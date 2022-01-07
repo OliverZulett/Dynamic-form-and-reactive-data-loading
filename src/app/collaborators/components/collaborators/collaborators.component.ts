@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Collaborator } from '../../models/collaborator.model';
 
 @Component({
   selector: 'app-collaborators',
@@ -9,11 +10,13 @@ import { ApiService } from '../../services/api.service';
 })
 export class CollaboratorsComponent implements OnInit {
 
+  collaborators!: any;
+
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.apiService.fetchCollaboratorsData()
-      .subscribe(collaboratorsData => console.log(collaboratorsData))
+      .subscribe(collaboratorsData => this.collaborators = collaboratorsData)
   }
 
 }
