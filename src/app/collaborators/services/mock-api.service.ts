@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from, of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MockApiService {
 
   constructor() { }
