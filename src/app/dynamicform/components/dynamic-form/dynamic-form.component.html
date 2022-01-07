@@ -1,2 +1,44 @@
-<p>dynamic-form works!</p>
+<h1>Dynamic form</h1>
+
 <app-dynamic-form-field></app-dynamic-form-field>
+
+<form [formGroup]="dynamicForm">
+  <div *ngFor="let formItem of dynamicFormFields">
+    <div *ngIf="!formItem.values; else withValues">
+      <!-- [id]="formItem.id" 
+      [title]="formItem.title || ''" 
+      [type]="formItem.type" 
+      (onBlurEmitted)="onBlurEmittedFromChildren($event)"  -->
+      <app-dynamic-form-field 
+      ></app-dynamic-form-field>
+    </div>
+    <ng-template #withValues>
+      <label>{{formItem.title}}</label>
+      <div *ngFor="let value of formItem.values">
+        <!-- [id]="formItem.id" 
+        [title]="value" 
+        [type]="'radio'" 
+        [value]="value" 
+        (onBlurEmitted)="onBlurEmittedFromChildren($event)" -->
+        <app-dynamic-form-field 
+        ></app-dynamic-form-field>
+        <!-- <label>{{value}}</label>
+        <input 
+          [id]="formItem.id" 
+          [type]="formItem.type" 
+          [formControlName]="formItem.id" 
+          [value]="value"
+        > -->
+      </div>
+    </ng-template>
+  </div>
+</form>
+
+
+<pre>
+  {{dynamicForm.value | json}}
+</pre>
+
+<div>
+  {{onBlurEmittedMessage}}
+</div>
